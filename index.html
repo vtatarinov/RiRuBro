@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Test</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="script.js"></script>
@@ -15,30 +15,28 @@
     <div class="page-wrapper">
         <div class="search">
             <p>
-                <label for="area_min">Площадь от</label>
-                <input type="text" id="area_min" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                <label for="area_max">до, м<sup>2</sup></label>
-                <input type="text" id="area_max" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <label for="area-min">Площадь от</label>
+                <input type="text" id="area-min">
+                <label for="area-max">до, м<sup>2</sup></label>
+                <input type="text" id="area-max">
             </p>
-            <div id="slider-range"></div>
+            <div id="area-slider-range"></div>
             <p>
-                <label for="rate_min">Ставка от</label>
-                <input type="text" id="rate_min" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                <label for="rate_max">до, руб./м<sup>2</sup>/год</label>
-                <input type="text" id="rate_max" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <label for="rate-min">Ставка от</label>
+                <input type="text" id="rate-min">
+                <label for="rate-max">до, руб./м<sup>2</sup>/год</label>
+                <input type="text" id="rate-max">
             </p>
-            <div id="slider-range"></div>
+            <div id="rate-slider-range"></div>
         </div>
         <div id="catalog" class="catalog">
             <div class="item">
                 <a href="#"><div class="item-title">Бизнес-центр "Белые сады"</div></a>
                 <div class="item-address">Лесная улица, 7</div>
-
             </div>
             <div class="item">
                 <a href="#"><div class="item-title">Бизнес-центр "Морозов"</div></a>
                 <div class="item-address">Улица Льва Толстого, 16</div>
-
             </div>
         </div>
     </div>
