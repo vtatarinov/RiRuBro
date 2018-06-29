@@ -1,2 +1,2 @@
-# rirubro
+# RiRuBro
 Тестовое задание для RiRuBro
