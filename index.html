@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Test</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <title>RICH RUSSIAN BROTHERS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="page-wrapper">
-        <div class="search">
+    <div class="row page-wrapper">
+        <div class="col-md-2 search">
             <p>
-                <label for="area-min">Площадь от</label>
+                <label for="area-min">Площадь от</label><br>
                 <input type="text" id="area-min">
                 <label for="area-max">до, м<sup>2</sup></label>
                 <input type="text" id="area-max">
@@ -29,7 +30,7 @@
             </p>
             <div id="rate-slider-range"></div>
         </div>
-        <div id="catalog" class="catalog">
+        <div id="catalog" class="col-md-8 catalog">
             <div class="item">
                 <a href="#"><div class="item-title">Бизнес-центр "Белые сады"</div></a>
                 <div class="item-address">Лесная улица, 7</div>

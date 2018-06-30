@@ -6,16 +6,20 @@
 .search {
     float: left;
     width: 20%;
-    padding: 20px;
+    margin: 15px;
+}
+
+.search p {
+    font-size: 14px;
 }
 
 .catalog {
-    padding: 20px;
+    margin: 15px;
 }
 
 #area-min,
 #area-max,
 #rate-min,
 #rate-max {
-    width: 50px;
+    width: 70px;
 }
