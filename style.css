@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+.row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 .search {
     margin: 15px;
 }
@@ -11,13 +16,21 @@
     font-size: 14px;
 }
 
-.catalog {
-    margin: 15px;
-}
-
 #area-min,
 #area-max,
 #rate-min,
 #rate-max {
     width: 70px;
+}
+
+.catalog {
+    margin: 25px;
+}
+
+.item-img {
+    display: inline-block;
+}
+
+.item-info {
+    display: inline-block;
 }
