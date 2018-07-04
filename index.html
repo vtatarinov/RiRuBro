@@ -16,20 +16,29 @@
 <body>
     <div class="row page-wrapper">
         <div class="col-md-2 search">
-            <p>
-                <label for="area-min">Площадь от</label><br>
+            <div class="area-min">
+                <label for="area-min">Площадь от</label>
+            </div>
+            <div class="area-max">
+                <label for="area-max">до, м&sup2;</label>
+            </div>
+            <div class="area-inputs">
                 <input type="text" id="area-min">
-                <label for="area-max">до, м<sup>2</sup></label>
                 <input type="text" id="area-max">
-            </p>
+            </div>
             <div id="area-slider-range"></div>
-            <p>
+            <div class="rate-min">
                 <label for="rate-min">Ставка от</label>
+            </div>
+            <div class="rate-max">
+                <label for="rate-max">до, руб./м&sup2;/год</label>
+            </div>
+            <div class="rate-inputs">
                 <input type="text" id="rate-min">
-                <label for="rate-max">до, руб./м<sup>2</sup>/год</label>
                 <input type="text" id="rate-max">
-            </p>
+            </div>
             <div id="rate-slider-range"></div>
+            <a href="javascript:void(0);" class="search-button">Найти</a>
         </div>
         <div id="catalog" class="col-md-10 catalog">
             <div class="item">
@@ -38,24 +47,24 @@
                 </div>
                 <div class="item-info">
                     <a href="#" class="item-title">Бизнес-центр &laquo;Белые сады&raquo;<i class="far fa-building"></i></a>
-                    <div class="item-address">Лесная улица, 7</div>
+                    <p class="item-address">Лесная улица, 7</p>
                     <div class="item-block">
-                        <p><b>Аренда офиса</b> &middot; <span>2 этаж</span></p>
-                        <div class="item-area"><b>250 м<sup>2</sup></b></div>
-                        <div class="item-rate-year"><b>61 500</b> <span>руб./м<sup>2</sup> в год</span></div>
-                        <div class="item-rate-month"><b>1 281 200</b> <span>руб./мес</span></div>
+                        <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>2 этаж</span></p>
+                        <div class="item-area"><a href="#">250 м&sup2;</a></div>
+                        <div class="item-rate-year">61 500 <span>руб./м&sup2; в год</span></div>
+                        <div class="item-rate-month">1 281 200 <span>руб./мес</span></div>
                     </div>
                     <div class="item-block">
-                        <p><b>Аренда офиса</b> &middot; <span>2 этаж</span></p>
-                        <div class="item-area">307 м<sup>2</sup></div>
-                        <div class="item-rate-year"><b>61 500</b> руб./м<sup>2</sup> в год</div>
-                        <div class="item-rate-month"><b>1 573 300</b> руб./мес</div>
+                        <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>2 этаж</span></p>
+                        <div class="item-area"><a href="#">307 м&sup2;</a></div>
+                        <div class="item-rate-year">61 500 <span>руб./м&sup2; в год</span></div>
+                        <div class="item-rate-month">1 573 300 <span>руб./мес</span></div>
                     </div>
                     <div class="item-block">
-                        <p><b>Аренда офиса</b> &middot; <span>2 этаж</span> &middot; <span>Готово к въезду</span> &middot; <span>Открытая планировка</span></p>
-                        <div class="item-area">320 м<sup>2</sup></div>
-                        <div class="item-rate-year"><b>61 500</b> руб./м<sup>2</sup> в год</div>
-                        <div class="item-rate-month"><b>1 639 900</b> руб./мес</div>
+                        <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>2 этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Открытая планировка</span></p>
+                        <div class="item-area"><a href="#">320 м&sup2;</a></div>
+                        <div class="item-rate-year">61 500 <span>руб./м&sup2; в год</span></div>
+                        <div class="item-rate-month">1 639 900 <span>руб./мес</span></div>
                     </div>
                     <a href="javascript:void(0);" class="item-showmore">Ещё 19 помещений в этом здании<i class="fas fa-chevron-down"></i></a>
                 </div>    
@@ -66,12 +75,12 @@
                 </div>
                 <div class="item-info">
                     <a href="#" class="item-title">Бизнес-центр &laquo;Морозов&raquo;<i class="far fa-building"></i></a>
-                    <div class="item-address">Улица Льва Толстого, 16</div>
+                    <p class="item-address">Улица Льва Толстого, 16</p>
                     <div class="item-block">
-                        <p><b>Аренда офиса</b> &middot; <span>1-3 этаж</span> &middot; <span>Готово к въезду</span> &middot; <span>Смешанная планировка</span></p>
-                        <div class="item-area">1222 м<sup>2</sup></div>
-                        <div class="item-rate-year"><b>45 000</b> руб./м<sup>2</sup> в год</div>
-                        <div class="item-rate-month"><b>4 582 500</b> руб./мес</div>
+                        <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>1-3 этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Смешанная планировка</span></p>
+                        <div class="item-area"><a href="#">1222 м&sup2;</a></div>
+                        <div class="item-rate-year">45 000 <span>руб./м&sup2; в год</span></div>
+                        <div class="item-rate-month">4 582 500 <span>руб./мес</span></div>
                     </div>
                 </div>
             </div>
