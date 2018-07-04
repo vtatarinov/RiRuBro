@@ -65,19 +65,25 @@ label {
     margin-top: 10px;
 }
 
-.search-button {
+#search-button {
     display: block;
     background-color: #F52435;
     color: #FFFFFF;
+    font-size: 14px;
     text-align: center;
     margin: 15px 0;
     line-height: 40px;
     border-radius: 3px;
+    box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.search-button:hover {
+#search-button:hover {
     color: #FFFFFF;
     text-decoration: none;
+    box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.5);
+    transition: box-shadow .3s;
+    -webkit-transition: box-shadow .3s;
+    -moz-transition: box-shadow .3s;
 }
 
 .catalog {
