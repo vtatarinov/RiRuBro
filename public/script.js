@@ -47,7 +47,7 @@ $(function() {
             rate_max: rate_max
         },
         success: function(answer) {
-            alert(answer);
+            console.log(answer);
         },
         error: function() {
             alert ("Что-то пошло не так...");
