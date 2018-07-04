@@ -89,8 +89,18 @@
     display: inline-block;
 }
 
+.item-rate-year span {
+    font-size: 14px;
+    color: black;
+}
+
 .item-rate-month {
     display: inline-block;
+}
+
+.item-rate-month span {
+    font-size: 14px;
+    color: black;
 }
 
 .item-showmore {
