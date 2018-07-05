@@ -1,10 +1,18 @@
 $(function() {
+    searchLoad = JSON.parse(localStorage.getItem("search"));
+    if (searchLoad == null) {
+        areaMin = 5, areaMax = 64000, rateMin = 900, rateMax = 177777;
+    }
+    else {
+        areaMin = searchLoad.areaMin, areaMax = searchLoad.areaMax, rateMin = searchLoad.rateMin, rateMax = searchLoad.rateMax;
+    }
+
   //Фильтр поиска по параметрам
     $("#area-slider-range").slider({
         range: true,
         min: 5,
         max: 64000,
-        values: [5, 64000],
+        values: [areaMin, areaMax],
         slide: function(event, ui) {
         $("#area-min").val(ui.values[0]);
         $("#area-max").val(ui.values[1]);
@@ -54,7 +62,7 @@ $(function() {
         range: true,
         min: 900,
         max: 177777,
-        values: [900, 177777],
+        values: [rateMin, rateMax],
         slide: function(event, ui) {
         $("#rate-min").val(ui.values[0]);
         $("#rate-max").val(ui.values[1]);
@@ -99,7 +107,7 @@ $(function() {
         rate_min = $("input#rate-min").val();
         rate_max = $("input#rate-max").val();
     });
-  
+
     //Навешивание обработчика на кнопку поиска
 
     document.getElementById("search-button").addEventListener("click", function() {
@@ -115,7 +123,15 @@ $(function() {
             },
             success: function(answer) {
                 //console.log(answer);
-                $("#catalog").append(answer);
+                $("#catalog1").html(answer);
+                searchObj = {
+                    areaMin: area_min,
+                    areaMax: area_max,
+                    rateMin: rate_min,
+                    rateMax: rate_max
+                };
+                searchString = JSON.stringify(searchObj);
+                localStorage.setItem("search", searchString);
             },
             error: function() {
                 alert ("Что-то пошло не так...");

@@ -11,32 +11,33 @@ while ($data_blocks = $result_blocks->fetch()) {
     $blocks[] = $data_blocks;
 }
 
+if ($result_blocks->rowCount() == 0) {
+    echo 'Ничего не найдено';
+    return false;
+}
+
 $result_objects = $connect->query("SELECT * FROM objects LIMIT 5");
 while ($data_objects = $result_objects->fetch()) {
     $objects[] = $data_objects;
 }
-/* echo '<pre>';
-print_r ($blocks);
-echo '</pre>'; */
+echo '<pre>';
+print_r ($data_blocks);
+echo '</pre>';
 //print_r ($objects);
 echo '<div class="item">
 <div class="item-img">
-    <img src="'.$blocks[0][photopath].'" alt="'.$blocks[0][photoalt].'">
+    <img src="'.$blocks[0]['photopath'].'" alt="'.$blocks[0]['photoalt'].'">
 </div>
 <div class="item-info">
-    <a href="'.$blocks[0][url].'" class="item-title">'.$blocks[0][name].'<i class="far fa-building"></i></a>
-    <p class="item-address">'.$blocks[0][address].'</p>';
+    <a href="'.$blocks[0]['url'].'" class="item-title">'.$blocks[0]['name'].'<i class="far fa-building"></i></a>
+    <p class="item-address">'.$blocks[0]['address'].'</p>';
 foreach ($blocks as $block) {
-
-    //foreach ($blocks as $block) {
-        echo '<div class="item-block">
-        <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>'.$block[floor].' этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Смешанная планировка</span></p>
-        <div class="item-area"><a href="#">'.$block[area].' м&sup2;</a></div>
-        <div class="item-rate-year">'.$block[rate_year].' <span>руб./м&sup2; в год</span></div>
-        <div class="item-rate-month">'.$block[rate_month].' <span>руб./мес</span></div>
-    </div>';
-    //}
-
+    echo '<div class="item-block">
+            <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>'.$block['floor'].' этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Смешанная планировка</span></p>
+            <div class="item-area"><a href="#">'.$block['area'].' м&sup2;</a></div>
+            <div class="item-rate-year">'.$block['rate_year'].' <span>руб./м&sup2; в год</span></div>
+            <div class="item-rate-month">'.$block['rate_month'].' <span>руб./мес</span></div>
+        </div>';
 }
 echo '</div>
-</div>';
+    </div>';
