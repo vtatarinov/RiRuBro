@@ -2,10 +2,10 @@
 -- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Июл 05 2018 г., 09:56
--- Версия сервера: 5.7.22-log
--- Версия PHP: 5.6.31
+-- Хост: 127.0.0.1:3306
+-- Время создания: Июл 06 2018 г., 14:42
+-- Версия сервера: 5.7.20
+-- Версия PHP: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -50,7 +50,9 @@ INSERT INTO `blocks` (`id`, `floor`, `area`, `rate_year`, `rate_month`, `object_
 (6, 4, 400, 61500, 2050000, 1),
 (7, 4, 320, 61500, 1639900, 1),
 (8, 4, 250, 61500, 1281200, 1),
-(9, 3, 1222, 45000, 4582500, 2);
+(9, 3, 1222, 45000, 4582500, 2),
+(10, 4, 550, 55000, 2520830, 2),
+(11, 5, 455, 55000, 2085410, 2);
 
 -- --------------------------------------------------------
 
@@ -100,7 +102,7 @@ ALTER TABLE `objects`
 -- AUTO_INCREMENT для таблицы `blocks`
 --
 ALTER TABLE `blocks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

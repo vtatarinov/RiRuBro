@@ -150,10 +150,30 @@ $(function() {
             console.log("Done!");
         });
     }); */
-
-    function showMore() {
-        $(".item-showmore").parent().css("margin-bottom", "60px");
-        $(".item-showmore").remove();
-        console.log("Done!");
-    }
 });
+
+//Функция дополнительной выдачи блоков
+
+function showMore() {
+    element = event.target;
+    $.ajax({
+        type: 'POST',
+        url: '../search.php',
+        data:
+        {
+            area_min: area_min,
+            area_max: area_max,
+            rate_min: rate_min,
+            rate_max: rate_max,
+            offset: 3
+        },
+        success: function(answer) {
+            $(element).parent(".item-info").append(answer);
+            $(".item-showmore").parent().css("margin-bottom", "60px");
+            $(".item-showmore").remove();
+        },
+        error: function() {
+            alert ("Что-то пошло не так...");
+        }
+    })
+}

@@ -5,6 +5,7 @@ $area_min = (int)$_POST['area_min'];
 $area_max = (int)$_POST['area_max'];
 $rate_min = (int)$_POST['rate_min'];
 $rate_max = (int)$_POST['rate_max'];
+$offset = (isset($_POST['offset'])) ? (int)$_POST['offset'] : '';
 
 $result_objects = $connect->query("SELECT * FROM blocks INNER JOIN objects ON blocks.object_id = objects.id WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max GROUP BY object_id");
 $objects = $result_objects->fetchAll();
@@ -19,9 +20,10 @@ foreach ($objects as $object) {
     $blocks = $result_blocks->fetchAll();
 
     $rowCount = $result_blocks->rowCount();
+    $limit = $rowCount - $offset;
 
     if ($rowCount > 3)
-        $rowCount = 3;
+        $items = 3;
 
     echo '<div class="item">
             <div class="item-img">
@@ -31,7 +33,7 @@ foreach ($objects as $object) {
                 <a href="'.$object['url'].'" class="item-title">'.$object['name'].'<i class="far fa-building"></i></a>
                 <p class="item-address">'.$object['address'].'</p>';
                 //foreach ($blocks as $block) {
-                for ($i = 0; $i < $rowCount; $i++) {
+                for ($i = 0; $i < $items; $i++) {
                     echo '<div class="item-block">
                             <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>'.$blocks[$i]['floor'].' этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Смешанная планировка</span></p>
                             <div class="item-area"><a href="#">'.$blocks[$i]['area'].' м&sup2;</a></div>
@@ -39,10 +41,9 @@ foreach ($objects as $object) {
                             <div class="item-rate-month">'.$blocks[$i]['rate_month'].' <span>руб./мес</span></div>
                         </div>';
                 }
-                if ($result_blocks->rowCount() > 3) {
-                    $rowCount = $result_blocks->rowCount();
+                if ($rowCount > 3) {
                     $more = $rowCount - 3;
-                    echo '<a href="javascript:void(0);" class="item-showmore" onclick="showMore()">Ещё '.$more.' помещений в этом здании<i class="fas fa-chevron-down"></i></a>';
+                    echo '<a href="javascript:void(0);" class="item-showmore" onclick="showMore()" name="'.$object['id'].'">Ещё '.$more.' помещений в этом здании<i class="fas fa-chevron-down"></i></a>';
                 }
     echo    '</div>
         </div>';
