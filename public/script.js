@@ -140,16 +140,6 @@ $(function() {
             }
         })
     });
-
-    //Навешивание обработчиков на кнопки дополнительной выдачи блоков
-
-    /* document.querySelectorAll(".item-showmore").forEach(function(element) {
-        element.addEventListener("click", function() {
-            $(".item-showmore").parent().css("margin-bottom", "60px");
-            $(".item-showmore").remove(); 
-            console.log("Done!");
-        });
-    }); */
 });
 
 //Функция дополнительной выдачи блоков
