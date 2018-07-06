@@ -45,7 +45,7 @@
             <a href="javascript:void(0);" id="search-button">Найти</a>
         </div>
         <div id="catalog" class="col-md-10 catalog">
-            <div class="item">
+            <!-- <div class="item">
                 <div class="item-img">
                     <img src="img/belie_sadi.png" alt="belie sadi">
                 </div>
@@ -87,8 +87,15 @@
                         <div class="item-rate-month">4 582 500 <span>руб./мес</span></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
+    <script>
+        function showMore() {
+            $(".item-showmore").parent().css("margin-bottom", "60px");
+            $(".item-showmore").remove();
+            console.log("Done!");
+    }
+    </script>
 </body>
 </html>

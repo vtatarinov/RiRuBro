@@ -1,4 +1,6 @@
 $(function() {
+    //Загрузка из LocalStorage параметров поиска
+
     searchLoad = JSON.parse(localStorage.getItem("search"));
     if (searchLoad == null) {
         areaMin = 5, areaMax = 64000, rateMin = 900, rateMax = 177777;
@@ -7,7 +9,8 @@ $(function() {
         areaMin = searchLoad.areaMin, areaMax = searchLoad.areaMax, rateMin = searchLoad.rateMin, rateMax = searchLoad.rateMax;
     }
 
-  //Фильтр поиска по параметрам
+  //Фильтр поиска по параметрам с ползунком
+
     $("#area-slider-range").slider({
         range: true,
         min: 5,
@@ -122,7 +125,6 @@ $(function() {
                 rate_max: rate_max
             },
             success: function(answer) {
-                //console.log(answer);
                 $("#catalog").html(answer);
                 searchObj = {
                     areaMin: area_min,
@@ -141,11 +143,17 @@ $(function() {
 
     //Навешивание обработчиков на кнопки дополнительной выдачи блоков
 
-    document.querySelectorAll(".item-showmore").forEach(function(element) {
+    /* document.querySelectorAll(".item-showmore").forEach(function(element) {
         element.addEventListener("click", function() {
             $(".item-showmore").parent().css("margin-bottom", "60px");
             $(".item-showmore").remove(); 
             console.log("Done!");
         });
-    });
+    }); */
+
+    function showMore() {
+        $(".item-showmore").parent().css("margin-bottom", "60px");
+        $(".item-showmore").remove();
+        console.log("Done!");
+    }
 });
