@@ -146,6 +146,7 @@ $(function() {
 
 function showMore() {
     element = event.target;
+    object_id = event.target.name;
     $.ajax({
         type: 'POST',
         url: '../search.php',
@@ -155,7 +156,8 @@ function showMore() {
             area_max: area_max,
             rate_min: rate_min,
             rate_max: rate_max,
-            offset: 3
+            offset: 3,
+            object_id: object_id
         },
         success: function(answer) {
             $(element).parent(".item-info").append(answer);
