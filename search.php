@@ -6,38 +6,38 @@ $area_max = (int)$_POST['area_max'];
 $rate_min = (int)$_POST['rate_min'];
 $rate_max = (int)$_POST['rate_max'];
 
-$result_blocks = $connect->query("SELECT * FROM blocks INNER JOIN objects ON blocks.object_id = objects.id WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max");
-while ($data_blocks = $result_blocks->fetch()) {
-    $blocks[] = $data_blocks;
-}
+$result_objects = $connect->query("SELECT * FROM blocks INNER JOIN objects ON blocks.object_id = objects.id WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max GROUP BY object_id");
+$objects = $result_objects->fetchAll();
 
-if ($result_blocks->rowCount() == 0) {
-    echo 'Ничего не найдено';
+if ($result_objects->rowCount() == 0) {
+    echo '<p>По вашим параметрам ничего не найдено</p>';
     return false;
 }
 
-$result_objects = $connect->query("SELECT * FROM objects LIMIT 5");
-while ($data_objects = $result_objects->fetch()) {
-    $objects[] = $data_objects;
-}
-echo '<pre>';
-print_r ($data_blocks);
-echo '</pre>';
-//print_r ($objects);
-echo '<div class="item">
-<div class="item-img">
-    <img src="'.$blocks[0]['photopath'].'" alt="'.$blocks[0]['photoalt'].'">
-</div>
-<div class="item-info">
-    <a href="'.$blocks[0]['url'].'" class="item-title">'.$blocks[0]['name'].'<i class="far fa-building"></i></a>
-    <p class="item-address">'.$blocks[0]['address'].'</p>';
-foreach ($blocks as $block) {
-    echo '<div class="item-block">
-            <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>'.$block['floor'].' этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Смешанная планировка</span></p>
-            <div class="item-area"><a href="#">'.$block['area'].' м&sup2;</a></div>
-            <div class="item-rate-year">'.$block['rate_year'].' <span>руб./м&sup2; в год</span></div>
-            <div class="item-rate-month">'.$block['rate_month'].' <span>руб./мес</span></div>
+foreach ($objects as $object) {
+    $result_blocks = $connect->query("SELECT * FROM blocks INNER JOIN objects ON blocks.object_id = objects.id WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max AND object_id = $object[object_id]");
+    $blocks = $result_blocks->fetchAll();
+
+    echo '<div class="item">
+            <div class="item-img">
+                <img src="'.$object['photopath'].'" alt="'.$object['photoalt'].'">
+            </div>
+            <div class="item-info">
+                <a href="'.$object['url'].'" class="item-title">'.$object['name'].'<i class="far fa-building"></i></a>
+                <p class="item-address">'.$object['address'].'</p>';
+                foreach ($blocks as $block) {
+                    echo '<div class="item-block">
+                            <p><b>Аренда офиса</b>&ensp;&bull;&ensp;<span>'.$block['floor'].' этаж</span>&ensp;&bull;&ensp;<span>Готово к въезду</span>&ensp;&bull;&ensp;<span>Смешанная планировка</span></p>
+                            <div class="item-area"><a href="#">'.$block['area'].' м&sup2;</a></div>
+                            <div class="item-rate-year">'.$block['rate_year'].' <span>руб./м&sup2; в год</span></div>
+                            <div class="item-rate-month">'.$block['rate_month'].' <span>руб./мес</span></div>
+                        </div>';
+                }
+                if ($result_blocks->rowCount() > 3) {
+                    $rowCount = $result_blocks->rowCount();
+                    $more = $rowCount - 3;
+                    echo '<a href="javascript:void(0);" class="item-showmore">Ещё '.$more.' помещений в этом здании<i class="fas fa-chevron-down"></i></a>';
+                }
+    echo    '</div>
         </div>';
 }
-echo '</div>
-    </div>';

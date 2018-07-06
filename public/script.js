@@ -123,7 +123,7 @@ $(function() {
             },
             success: function(answer) {
                 //console.log(answer);
-                $("#catalog1").html(answer);
+                $("#catalog").html(answer);
                 searchObj = {
                     areaMin: area_min,
                     areaMax: area_max,
