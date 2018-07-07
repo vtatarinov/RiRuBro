@@ -16,22 +16,25 @@ if ($result_objects->rowCount() == 0) {
 }
 
 foreach ($objects as $object) {
-    $result_blocks = $connect->query("SELECT * FROM blocks INNER JOIN objects ON blocks.object_id = objects.id_object WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max AND object_id = $object[object_id]");
+    $result_blocks = $connect->query("SELECT * FROM blocks WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max AND object_id = $object[object_id] ORDER BY floor");
     $blocks = $result_blocks->fetchAll();
-
+    
     $rowCount = $result_blocks->rowCount();
     $limit = $rowCount - $offset;
 
 
     if ($offset > 0) {
-        $result_blocks = $connect->query("SELECT * FROM blocks WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max AND object_id = $_POST[object_id] LIMIT $limit OFFSET $offset");
+        $result_blocks = $connect->query("SELECT * FROM blocks WHERE area >= $area_min AND area <= $area_max AND rate_year >= $rate_min AND rate_year <= $rate_max AND object_id = $_POST[object_id] ORDER BY floor LIMIT $limit OFFSET $offset");
         $blocks = $result_blocks->fetchAll();
         renderBlocks($blocks);
         return;
     }
 
-    if ($rowCount > 3)
+    if ($rowCount > 3) {
         $items = 3;
+    } else {
+        $items = $rowCount;
+    }
 
     echo '<div class="item">
             <div class="item-img">
